@@ -1,0 +1,37 @@
+[GLOBAL]
+pants_version = "2.14.0"
+backend_packages = [
+	"pants.backend.python",
+	"pants.backend.python.lint.flake8",
+	"pants.backend.python.typecheck.mypy",
+	"pants.backend.python.lint.docformatter",
+	"pants.backend.python.lint.isort",
+	"pants.backend.python.lint.black",
+	"pants.backend.experimental.python.lint.pyupgrade"
+]
+
+[python]
+interpreter_constraints = ["CPython>=3.7,<4"]
+
+[flake8]
+config = ".flake8"
+
+[test]
+use_coverage = true
+
+[pytest]
+extra_requirements = [
+	"typer>=0.7.0",
+	"pyjwt",
+	"pytest-cov"
+]
+lockfile = "<none>"
+
+[coverage-py]
+report = ["xml", "html"]
+
+[mypy]
+config = "mypy.ini"
+
+[anonymous-telemetry]
+enabled = false
